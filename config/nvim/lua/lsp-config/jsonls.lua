@@ -20,6 +20,8 @@ M.setup = function(on_attach, capabilities, handlers)
 		capabilities = capabilities,
 		handlers = handlers,
 	})
+
+	vim.cmd [[ au BufRead,BufNewFile *.arb set filetype=json ]]
 end
 
 return M

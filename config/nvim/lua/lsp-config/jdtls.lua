@@ -79,7 +79,7 @@ M.setup = function()
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "crv", [[<Cmd>lua require("jdtls").extract_variable()<CR>]], opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "v", "crm", [[<Esc><Cmd>lua require("jdtls").extract_method(true)<CR>]], opts)
 
-		-- if client.resolved_capabilities.document_formatting then
+		-- if client.server_capabilities.documentFormattingProvider then
 		-- 	vim.cmd([[
 		--       augroup LspFormatting
 		-- 			autocmd! * <buffer>

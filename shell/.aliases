@@ -1,3 +1,4 @@
 alias vim="nvim"
 alias ls="ls -alh"
 alias cat="bat -f --tabs 2"
+

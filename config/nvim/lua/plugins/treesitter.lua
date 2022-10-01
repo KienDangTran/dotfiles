@@ -1,11 +1,28 @@
 local M = {}
 
 M.setup = function()
+	require 'nvim-treesitter'.define_modules {
+		fold = {
+			attach = function()
+				vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+				vim.opt.foldmethod = 'expr'
+				vim.cmd.normal 'zx' -- recompute folds
+			end,
+			detach = function() end,
+		}
+	}
+
+	-- require 'treesitter-context'.setup {
+	-- 	enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+	-- 	max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
+	-- 	trim_scope = 'outer',
+	-- }
+
 	require("nvim-treesitter.install").prefer_git = true
 
 	require("nvim-treesitter.configs").setup {
 		ensure_installed = "all",
-		ignore_install = { "phpdoc" },
+		ignore_install = { "phpdoc", "slint" },
 		auto_install = true,
 		sync_install = true,
 		highlight = { enable = true },
@@ -29,7 +46,7 @@ M.setup = function()
 		rainbow = {
 			enable = true,
 			extended_mode = true,
-		}
+		},
 	}
 
 end

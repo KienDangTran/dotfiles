@@ -30,11 +30,11 @@ local M = {}
 M.setup = function(on_attach, capabilities, handlers)
 	local luadev = require("lua-dev").setup({
 		lspconfig = {
-			on_attach = on_attach,
 			settings = settings,
 			flags = {
 				debounce_text_changes = 150,
 			},
+			on_attach = on_attach,
 			capabilities = capabilities,
 			handlers = handlers,
 		},

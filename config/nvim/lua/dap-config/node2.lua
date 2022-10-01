@@ -5,7 +5,7 @@ M.setup = function()
 	dap.adapters.node2 = {
 		type = "executable",
 		command = "node",
-		args = { os.getenv("HOME") .. "/dev/tools/vscode-node-debug2/out/src/nodeDebug.js" },
+		args = { os.getenv("HOME") .. "/_dev/repos/vscode-node-debug2/out/src/nodeDebug.js" },
 	}
 
 	dap.configurations.typescript = {

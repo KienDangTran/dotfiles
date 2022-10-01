@@ -10,6 +10,7 @@ M.setup = function()
 			enforce_regular_tabs = false,
 			show_buffer_close_icons = true,
 			always_show_bufferline = true,
+			right_mouse_command = "Bdelete! %d",
 			diagnostics = "nvim_lsp",
 			diagnostics_indicator = function(count, level, diagnostics_dict, context)
 				local icon = level:match("error") and " " or " "
@@ -21,6 +22,14 @@ M.setup = function()
 					text = "",
 					highlight = "Directory",
 					text_align = "left",
+					padding = 1,
+				},
+				{
+					filetype = "Outline",
+					text = "",
+					highlight = "Directory",
+					text_align = "left",
+					padding = 1,
 				},
 			},
 		},

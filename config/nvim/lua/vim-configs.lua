@@ -1,43 +1,48 @@
+local vo = vim.opt
+
+
 -- settings
-vim.opt.laststatus = 3
-vim.opt.termguicolors = true
--- vim.opt.syntax = "ON"
-vim.opt.completeopt = "menuone,preview,noselect"
+vo.laststatus = 3
+vo.termguicolors = true
+vo.completeopt = "menuone,preview,noselect"
 
 -- turn on line numbering
 vim.wo.number = true
-vim.opt.cursorline = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+vo.cursorline = true
+vo.splitbelow = true
+vo.splitright = true
 
 -- sane text files
-vim.opt.fileformat = "unix"
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
+vo.fileformat = "unix"
+vo.encoding = "utf-8"
+vo.fileencoding = "utf-8"
 
 -- sane editing
--- vim.opt.expandtab = false -- insert space characters whenever the tab key is pressed, if you want to enter a real tab character use Ctrl-V<Tab>
-vim.opt.tabstop = 2 -- number of space characters that will be inserted when the tab key is pressed
-vim.opt.shiftwidth = 2 -- number of space characters inserted for indentation
-vim.opt.softtabstop = 2
-vim.opt.tw = 80
-vim.opt.smartindent = true
-vim.opt.breakindent = true --Enable break indent
-vim.opt.autowrite = true
+-- vo.expandtab = false -- insert space characters whenever the tab key is pressed, if you want to enter a real tab character use Ctrl-V<Tab>
+vo.tabstop = 2 -- number of space characters that will be inserted when the tab key is pressed
+vo.shiftwidth = 2 -- number of space characters inserted for indentation
+vo.softtabstop = 2
+vo.tw = 80
+vo.smartindent = true
+vo.breakindent = true --Enable break indent
+vo.autowrite = true
 
 -- mouse
-vim.opt.mouse = "a"
+vo.mouse = "a"
 
 -- Save undo history
-vim.opt.undofile = true
+vo.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vo.ignorecase = true
+vo.smartcase = true
 
 -- Decrease update time
-vim.opt.updatetime = 150
+vo.updatetime = 150
 vim.wo.signcolumn = "yes"
+
+--
+vo.breakindent = true -- Indent wrapped lines to match start
 
 -- keymaps
 -- copy, cut and paste

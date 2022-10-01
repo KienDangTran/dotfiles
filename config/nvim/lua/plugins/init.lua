@@ -80,6 +80,27 @@ require("packer").startup({
 			end,
 		}
 
+		-- neovim language server configs
+		use {
+			"nvim-treesitter/nvim-treesitter",
+			run = function()
+				require('nvim-treesitter.install').update({ with_sync = true })
+			end,
+			config = function()
+				require("plugins.treesitter").setup()
+			end,
+		}
+		use {
+			"neovim/nvim-lspconfig",
+			config = function()
+				require("lsp-config").setup()
+			end,
+		}
+		use({
+			"glepnir/lspsaga.nvim",
+			branch = "main",
+		})
+
 		-- completion
 		use {
 			"hrsh7th/nvim-cmp",
@@ -96,21 +117,14 @@ require("packer").startup({
 			end,
 		}
 
-		-- neovim language server configs
+		-- Flutter tools
 		use {
-			"nvim-treesitter/nvim-treesitter",
-			run = function()
-				require('nvim-treesitter.install').update({ with_sync = true })
-			end,
+			"akinsho/flutter-tools.nvim",
+			requires = "nvim-lua/plenary.nvim",
 			config = function()
-				require("plugins.treesitter").setup()
+				require("lsp-config.flutter-tools").setup();
 			end,
 		}
-		use { "neovim/nvim-lspconfig" }
-		use({
-			"glepnir/lspsaga.nvim",
-			branch = "main",
-		})
 
 		-- java ls
 		use { "mfussenegger/nvim-jdtls" }
@@ -124,9 +138,6 @@ require("packer").startup({
 
 		-- lua ls
 		use { "folke/lua-dev.nvim" }
-
-		-- sql
-		use "nanotee/sqls.nvim"
 
 		-- DAP (Debug Adapter Protocol)
 		use {
@@ -150,7 +161,6 @@ require("packer").startup({
 			config = function()
 				require("trouble").setup {
 					auto_preview = false,
-					auto_fold = true,
 				}
 			end
 		}

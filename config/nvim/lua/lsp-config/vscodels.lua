@@ -6,8 +6,8 @@ M.setup = function(on_attach, capabilities, handlers)
 		root_dir = lspconfig.util.root_pattern(".eslintrc", ".eslintrc.js", ".eslintrc.json"),
 		on_attach = function(client, bufnr)
 			on_attach(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-			client.resolved_capabilities.document_range_formatting = false
+			client.server_capabilities.documentFormattingProvider = false
+			client.server_capabilities.documentRangeFormattingProvider = false
 		end,
 		settings = {
 			format = {

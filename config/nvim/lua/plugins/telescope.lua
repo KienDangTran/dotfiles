@@ -5,6 +5,8 @@ M.setup = function()
 	local telescope = require("telescope")
 	local action_layout = require("telescope.actions.layout")
 	local previewers = require("telescope.previewers")
+
+	-- Dont preview binaries
 	local Job = require("plenary.job")
 	local new_maker = function(filepath, bufnr, opts)
 		filepath = vim.fn.expand(filepath)
@@ -62,6 +64,7 @@ M.setup = function()
 	telescope.load_extension("fzf")
 	telescope.load_extension("dap")
 	telescope.load_extension("lazygit")
+	telescope.load_extension("flutter")
 
 	local opts = { noremap = true, silent = true }
 	vim.api.nvim_set_keymap("n", "<leader><space>", [[<cmd>lua require("telescope.builtin").buffers()<CR>]], opts)
@@ -76,6 +79,13 @@ M.setup = function()
 	vim.api.nvim_set_keymap("n", "<leader>so",
 		[[<cmd>lua require("telescope.builtin").tags{ only_current_buffer = true }<CR>]], opts)
 	vim.api.nvim_set_keymap("n", "<leader>?", [[<cmd>lua require("telescope.builtin").oldfiles()<CR>]], opts)
+
+	-- wrap previewer
+	vim.cmd([[
+		augroup telescope
+			autocmd User TelescopePreviewerLoaded setlocal wrap
+		augroup END
+	]])
 
 end
 

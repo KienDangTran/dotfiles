@@ -24,7 +24,7 @@ M.setup = function(on_attach, capabilities, handlers)
 			vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", ":TSLspRenameFile<CR>", opts)
 			vim.api.nvim_buf_set_keymap(bufnr, "n", "go", ":TSLspImportAll<CR>", opts)
 
-			if client.resolved_capabilities.document_formatting then
+			if client.server_capabilities.documentFormattingProvider then
 				vim.cmd([[
           augroup LspFormatting
               autocmd! * <buffer>
@@ -40,6 +40,10 @@ M.setup = function(on_attach, capabilities, handlers)
 		capabilities = capabilities,
 		handlers = handlers
 	})
+
+	-- DAP
+	require("dap-config.node2").setup()
+
 end
 
 return M

@@ -28,13 +28,15 @@ M.on_attach = function(client, bufnr)
 		max_preview_lines = 20,
 		move_in_saga = { prev = '<C-b>', next = '<C-f>' },
 		code_action_keys = {
-			quit = "<C-c>",
+			quit = "<ESC>",
 		},
 		definition_action_keys = {
-			quit = "<C-c>",
+			quit = "<ESC>",
 		},
 		finder_action_keys = {
-			quit = "<C-c>",
+			quit = "<ESC>",
+			vsplit = "<C-v>",
+			split = "<C-x>",
 		},
 		finder_request_timeout = 5000,
 		show_outline = {
@@ -55,8 +57,8 @@ M.on_attach = function(client, bufnr)
 
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 	keymap("n", "<leader>e", [[<cmd>lua vim.diagnostic.open_float()<CR>]], opts)
-	keymap("n", "[e", [[<cmd>Lspsaga diagnostic_jump_next<CR>]], opts)
-	keymap("n", "]e", [[<cmd>Lspsaga diagnostic_jump_prev<CR>]], opts)
+	keymap("n", "[e", [[<cmd>Lspsaga diagnostic_jump_prev<CR>]], opts)
+	keymap("n", "]e", [[<cmd>Lspsaga diagnostic_jump_next<CR>]], opts)
 	keymap("n", "<leader>q", [[<cmd>lua vim.diagnostic.setloclist()<CR>]], opts)
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -78,7 +80,7 @@ M.on_attach = function(client, bufnr)
 	keymap("n", "<leader>gh", [[<cmd>Lspsaga lsp_finder<CR>]], opts)
 	keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
 
-	if client.resolved_capabilities.document_formatting then
+	if client.server_capabilities.documentFormattingProvider then
 		vim.cmd([[
 			augroup LspFormatting
 				autocmd! * <buffer>
