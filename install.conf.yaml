@@ -46,4 +46,5 @@
         - universal-ctags/universal-ctags/universal-ctags
         - lua-language-server
         - node
+        - git-delta
 

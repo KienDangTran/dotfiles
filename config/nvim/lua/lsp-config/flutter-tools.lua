@@ -27,8 +27,6 @@ M.setup = function()
 			},
 		},
 	}
-
-	vim.keymap.set("n", "<leader>O", "<cmd>FlutterOutlineToggle<CR>", { silent = true })
 end
 
 return M

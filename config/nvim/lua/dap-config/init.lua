@@ -36,13 +36,6 @@ local function configure_exts()
 					"watches",
 				},
 				size = 0.25, -- 25% of total lines
-				position = "bottom",
-			},
-			{
-				elements = {
-					"repl",
-				},
-				size = 0.4,
 				position = "right",
 			},
 		},

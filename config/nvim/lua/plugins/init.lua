@@ -137,7 +137,7 @@ require("packer").startup({
 		use { "b0o/schemastore.nvim" }
 
 		-- lua ls
-		use { "folke/lua-dev.nvim" }
+		use { "folke/neodev.nvim" }
 
 		-- DAP (Debug Adapter Protocol)
 		use {
@@ -162,6 +162,7 @@ require("packer").startup({
 				require("trouble").setup {
 					auto_preview = false,
 				}
+				vim.api.nvim_set_keymap("n", "<Leader>y", ":TroubleToggle<CR>", { silent = true, noremap = true })
 			end
 		}
 

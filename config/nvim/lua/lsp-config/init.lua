@@ -12,6 +12,8 @@ M.setup = function()
 		"yamlls",
 		"bashls",
 		"dockerls",
+		"terraform",
+		"graphql"
 	}
 	for _, server in pairs(servers) do
 		require("lsp-config." .. server).setup(

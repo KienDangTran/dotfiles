@@ -1,4 +1,8 @@
 alias vim="nvim"
 alias ls="ls -alh"
 alias cat="bat -f --tabs 2"
+alias tf="terraform"
+alias k="kubectl"
+alias ks="kubectl -n kube-system"
+alias kd="kubectl -n default"
 

@@ -6,14 +6,28 @@
 	process = git-lfs filter-process
 	required = true
 [diff]
-    tool = nvimdiff
+	tool = nvimdiff
+	colorMoved = default
 [difftool]
-    prompt = false
+	prompt = false
 [difftool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [merge]
-    tool = nvimdiff
+	tool = nvimdiff
+	conflictstyle = diff3
 [mergetool]
-    prompt = true
+	prompt = true
 [mergetool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
+
+# delta
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	line-numbers = true
+	side-by-side = true
+	syntax-theme = OneHalfDark
+

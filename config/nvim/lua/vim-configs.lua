@@ -47,10 +47,15 @@ vo.breakindent = true -- Indent wrapped lines to match start
 -- keymaps
 -- copy, cut and paste
 vim.api.nvim_set_keymap("v", "<C-c>", "\"+y", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<D-c>", "\"+y", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<C-x>", "\"+c", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<D-x>", "\"+c", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<C-v>", "c<ESC>\"+p", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<D-v>", "c<ESC>\"+p", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "<C-v>", "<ESC>\"+pa", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<D-v>", "<ESC>\"+pa", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-a>", "ggVG", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<D-a>", "ggVG", { noremap = true, silent = true })
 
 vim.cmd [[
 " wrap toggle

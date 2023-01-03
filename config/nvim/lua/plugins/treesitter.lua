@@ -21,12 +21,34 @@ M.setup = function()
 	require("nvim-treesitter.install").prefer_git = true
 
 	require("nvim-treesitter.configs").setup {
-		ensure_installed = "all",
+		ensure_installed = {
+			"bash",
+			"c", "clojure", "comment", "cpp", "css",
+			"dart", "diff", "dockerfile",
+			"git_rebase", "gitattributes", "gitignore", "go", "graphql",
+			"hcl", "help", "html", "http",
+			"java", "javascript", "jsdoc", "json", "jsonc",
+			"kotlin",
+			"lua",
+			"markdown", "markdown_inline",
+			"proto", "python",
+			"regex", "ruby", "rust",
+			"scss", "solidity", "sql", "swift",
+			"toml", "tsx", "typescript",
+			"vim",
+			"yaml"
+		},
 		ignore_install = { "phpdoc", "slint" },
 		auto_install = true,
 		sync_install = true,
 		highlight = { enable = true },
-		incremental_selection = { enable = true },
+		incremental_selection = {
+			enable = true,
+			init_selection = "gnn", -- set to `false` to disable one of the mappings
+			node_incremental = "grn",
+			scope_incremental = "grc",
+			node_decremental = "grm",
+		},
 		-- plugins
 		autopairs = { enable = true },
 		autotag = { enable = true },

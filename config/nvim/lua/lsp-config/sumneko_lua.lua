@@ -13,7 +13,7 @@ local settings = {
 		},
 		completion = {
 			showWord = "Disable",
-			callSnippet = "Disable",
+			callSnippet = "Replace",
 			keywordSnippet = "Disable",
 		},
 		workspace = {
@@ -28,18 +28,16 @@ local settings = {
 local M = {}
 
 M.setup = function(on_attach, capabilities, handlers)
-	local luadev = require("lua-dev").setup({
-		lspconfig = {
-			settings = settings,
-			flags = {
-				debounce_text_changes = 150,
-			},
-			on_attach = on_attach,
-			capabilities = capabilities,
-			handlers = handlers,
+	require("neodev").setup()
+	require("lspconfig").sumneko_lua.setup({
+		settings = settings,
+		flags = {
+			debounce_text_changes = 150,
 		},
+		on_attach = on_attach,
+		capabilities = capabilities,
+		handlers = handlers,
 	})
-	require("lspconfig").sumneko_lua.setup(luadev)
 end
 
 return M

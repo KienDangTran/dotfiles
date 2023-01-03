@@ -132,6 +132,10 @@ M.setup = function()
 
 	ins_left {
 		"filename",
+		file_status = true, -- Displays file status (readonly status, modified status)
+		newfile_status = false, -- Display new file status (new file means no write after created)
+		path = 1, -- 1: Relative path
+		shorting_target = 40,
 		cond = conditions.buffer_not_empty,
 		color = { fg = colors.magenta, gui = "bold" },
 	}
@@ -190,8 +194,11 @@ M.setup = function()
 
 	ins_right {
 		"fileformat",
-		fmt = string.upper,
-		icons_enabled = false, -- I think icons are cool but Eviline doesn"t have them. sigh
+		symbols = {
+			unix = '', -- e712
+			dos = '', -- e70f
+			mac = '', -- e711
+		},
 		color = { fg = colors.green, gui = "bold" },
 	}
 
