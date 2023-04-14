@@ -5,3 +5,4 @@ local opt = vim.opt
 
 opt.laststatus = 3
 opt.relativenumber = false
+opt.wrap = true

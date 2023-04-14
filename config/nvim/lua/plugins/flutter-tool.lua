@@ -8,7 +8,7 @@ return {
   config = function(plugin, opts)
     require("flutter-tools").setup({
       debugger = { -- integrate with nvim dap + install dart code debugger
-        enabled = true,
+        enabled = false,
       },
       fvm = true,
       widget_guides = {
