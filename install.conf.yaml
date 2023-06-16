@@ -1,10 +1,10 @@
 # install.conf.yaml
 - defaults:
     link:
-        relink: true
-        create: true
+      relink: true
+      create: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - create:
     - ~/.vim
@@ -24,27 +24,22 @@
 - shell:
     - [chsh -s $(which zsh) || true, Making zsh the default shell]
     - [git submodule update --init --recursive || true, Installing submodules]
-    - [
-      rm -rf ~/.local/share/nvim/site/pack/packer && git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim,
-          Installing Packer,
-      ]
-    - [
-        nvim --headless -u NONE -c 'autocmd User PackerComplete quitall' -c 'lua require("plugins")' -c 'lua require("packer").sync()',
-        Installing Neovim plugins,
-      ]
 
 - ifmacos:
     - brew:
         - bat
-        - fd
         - fzf
         - neovim
         - starship
         - tree
         - ripgrep
+        - gnu-sed
         - lazygit
         - universal-ctags/universal-ctags/universal-ctags
         - lua-language-server
         - node
         - git-delta
-
+        - chroma
+        - nvm
+        - rbenv
+        - ruby-build

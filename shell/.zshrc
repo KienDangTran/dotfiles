@@ -6,21 +6,23 @@ antigen use oh-my-zsh # Yes, I want to use Oh My ZSH
 
 # oh-my-zsh plugins
 antigen bundle aws
+antigen bundle bundler
 antigen bundle colorize
 antigen bundle command-not-found
 antigen bundle docker
 antigen bundle dotenv
-antigen bundle fd
 antigen bundle fzf
-antigen bundle git-auto-fetch
+antigen bundle rails
+antigen bundle ripgrep
+antigen bundle sdk
 antigen bundle ssh-agent
 antigen bundle vi-mode
-antigen bundle zsh-interactive-cd
 antigen bundle z
+antigen bundle zsh-interactive-cd
+antigen bundle zsh-navigation-tools
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle wfxr/forgit
 
 # Do OS dependant stuff
 case `uname` in
@@ -41,6 +43,7 @@ antigen apply
 
 source ~/dotfiles/shell/.aliases
 
+ZSH_COLORIZE_TOOL=chroma
 # Default editor
 export EDITOR=nvim
 # If you come from bash you might have to change your $PATH.
@@ -48,7 +51,7 @@ export PATH="$ZSH_BASE/brew/bin:$PATH"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_DEFAULT_OPTS='
 	--ansi
 	--inline-info

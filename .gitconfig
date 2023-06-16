@@ -23,11 +23,13 @@
 # delta
 [core]
 	pager = delta
+	autocrlf = input
 [interactive]
 	diffFilter = delta --color-only
 [delta]
 	navigate = true
 	line-numbers = true
 	side-by-side = true
+  tabs = 2
 	syntax-theme = OneHalfDark
 
