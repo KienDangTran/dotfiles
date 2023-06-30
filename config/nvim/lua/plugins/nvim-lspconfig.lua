@@ -9,13 +9,16 @@ return {
       solargraph = {
         settings = {
           solargraph = {
-            autoformat = true,
-            completion = true,
+            useBundler = true,
             diagnostic = true,
-            folding = true,
-            references = true,
-            rename = true,
+            completion = true,
+            hover = true,
+            formatting = true,
             symbols = true,
+            definitions = true,
+            rename = true,
+            references = true,
+            folding = true,
           },
         },
       },
