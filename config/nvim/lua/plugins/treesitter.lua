@@ -68,7 +68,7 @@ return {
         },
         ignore_install = { "phpdoc", "slint" },
         auto_install = true,
-        sync_install = true,
+        sync_install = false,
         highlight = { enable = true },
         incremental_selection = {
           enable = true,
