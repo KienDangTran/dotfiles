@@ -1,25 +1,11 @@
+[submodule "antigen"]
+	path = antigen
+	url = https://github.com/zsh-users/antigen.git
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "antigen"]
-	path = antigen
-	url = https://github.com/zsh-users/antigen.git
-[submodule "fzf"]
-	path = fzf
-	url = https://github.com/junegunn/fzf.git
-[submodule "ohmyzsh"]
-	path = .ohmyzsh
-	url = https://github.com/ohmyzsh/ohmyzsh.git
-[submodule "dotbot-ifplatform"]
-	path = dotbot-ifplatform
-	url = https://github.com/ssbanerje/dotbot-ifplatform.git
-[submodule "dotbot-brew"]
-	path = dotbot-brew
-	url = https://github.com/d12frosted/dotbot-brew.git
-[submodule "nerd-fonts"]
-	path = nerd-fonts
-	url = https://github.com/ryanoasis/nerd-fonts.git
-[submodule "brew"]
-    url = https://github.com/Homebrew/brew.git
-    path = brew
+[submodule "dotbot-brewfile"]
+	path = dotbot-brewfile
+	url = https://github.com/sobolevn/dotbot-brewfile.git
+	ignore = dirty

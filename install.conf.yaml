@@ -12,6 +12,7 @@
 - link:
     ~/.aliases: shell/.aliases
     ~/.zshrc: shell/.zshrc
+    ~/.zprofile: shell/.zprofile
     ~/.gitconfig: .gitconfig
     ~/.config:
       create: true
@@ -25,21 +26,11 @@
     - [chsh -s $(which zsh) || true, Making zsh the default shell]
     - [git submodule update --init --recursive || true, Installing submodules]
 
-- ifmacos:
-    - brew:
-        - bat
-        - fzf
-        - neovim
-        - starship
-        - tree
-        - ripgrep
-        - gnu-sed
-        - lazygit
-        - universal-ctags/universal-ctags/universal-ctags
-        - lua-language-server
-        - node
-        - git-delta
-        - chroma
-        - nvm
-        - rbenv
-        - ruby-build
+# This apply to all commands that come after setting the defaults.
+- defaults:
+    brewfile:
+      stdout: false
+      stderr: false
+      include: ['tap', 'brew', 'cask', 'mas']
+- brewfile:
+    file: Brewfile
