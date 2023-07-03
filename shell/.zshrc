@@ -17,7 +17,7 @@ antigen bundle ripgrep
 antigen bundle sdk
 antigen bundle ssh-agent
 antigen bundle vi-mode
-antigen bundle z
+antigen bundle agkozak/zsh-z
 antigen bundle zsh-interactive-cd
 antigen bundle zsh-navigation-tools
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -85,8 +85,8 @@ export FORGIT_FZF_DEFAULT_OPTS='
 '
 unalias z 2> /dev/null
 z() {
-	[ $# -gt 0 ] && _z "$*" && return
-	cd "$(_z -l 2>&1 | fzf --preview 'tree -C $(sed "s/^[^\/]*\//\//g" <<< {})' --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+  [ $# -gt 0 ] && zshz "$*" && return
+  cd "$(zshz -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
 }
 
 # (EXPERIMENTAL) Advanced customization of fzf options via _fzf_comprun function
