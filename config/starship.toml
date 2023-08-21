@@ -1,3 +1,5 @@
+command_timeout = 1000
+
 [aws]
 disabled = false
 
@@ -28,7 +30,7 @@ disabled = false
 [java]
 
 [kubernetes]
-disabled = false
+disabled = true
 
 [nodejs]
 

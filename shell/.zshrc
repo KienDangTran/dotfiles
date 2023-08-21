@@ -65,6 +65,7 @@ else
 fi
   
 export PATH="${brew_path}/bin:${brew_path}/sbin:$PATH"
+eval "$(rbenv init - zsh)"
 
 #nvm
 mkdir -p ~/.nvm ~/.nvm-x86
@@ -129,4 +130,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 export PATH="/usr/local/Homebrew/opt/imagemagick@6/bin":"/usr/local/Homebrew/opt/libpq/bin":"$PATH"
-
+export KUBE_CONFIG_PATH=~/.kube/config
