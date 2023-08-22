@@ -22,6 +22,7 @@ return {
       require("nvim-treesitter.install").prefer_git = true
 
       require("nvim-treesitter.configs").setup({
+        -- parser_install_dir = os.getenv("TREESITTER_PARSER_INSTALL_DIR"),
         ensure_installed = {
           "bash",
           "c",
@@ -38,7 +39,6 @@ return {
           "go",
           "graphql",
           "hcl",
-          "help",
           "html",
           "http",
           "java",

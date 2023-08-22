@@ -81,7 +81,17 @@ export PATH="$HOME/.pub-cache/bin":"$ANDROID_SDK_ROOT/platform-tools":"$ANDROID_
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ ! "$PATH" == *${brew_opt_path}/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/${brew_opt_path}/fzf/bin"
+fi
+
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "${brew_opt_path}/fzf/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+# ------------
+source "${brew_opt_path}/fzf/shell/key-bindings.zsh"
 # export FZF_BASE='/opt/homebrew/Cellar/fzf/0.42.0'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_DEFAULT_OPTS='

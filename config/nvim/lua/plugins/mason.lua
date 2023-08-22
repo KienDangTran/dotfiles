@@ -4,9 +4,9 @@ return {
     ensure_installed = {
       "angular-language-server",
       "bash-language-server",
-      "css-lsp cssls",
+      "css-lsp",
       "dockerfile-language-server",
-      "eslint-lsp eslint",
+      "eslint-lsp",
       "gradle-language-server",
       "html-lsp",
       "json-lsp",
