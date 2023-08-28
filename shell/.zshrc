@@ -77,8 +77,8 @@ export NVM_DIR="${nvm_path}"
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH="$HOME/.pub-cache/bin":"$ANDROID_SDK_ROOT/platform-tools":"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin":"$PATH"
 #
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# Add rvm/rbenv to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.rbenv/shims"
 
 # fzf
 if [[ ! "$PATH" == *${brew_opt_path}/fzf/bin* ]]; then
@@ -141,3 +141,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 export PATH="/usr/local/Homebrew/opt/imagemagick@6/bin":"/usr/local/Homebrew/opt/libpq/bin":"$PATH"
 export KUBE_CONFIG_PATH=~/.kube/config
+
+# golang
+export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+export GOROOT=$(brew --prefix golang)/libexec
+export PATH=$PATH:$GOBIN:$GOROOT/bin

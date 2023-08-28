@@ -33,3 +33,7 @@
   tabs = 2
 	syntax-theme = OneHalfDark
 
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[credential]
+	helper = cache
