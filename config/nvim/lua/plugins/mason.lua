@@ -9,7 +9,6 @@ return {
       "eslint-lsp",
       "gopls",
       "gradle-language-server",
-      "html-lsp",
       "json-lsp",
       "jdtls",
       "lua-language-server",

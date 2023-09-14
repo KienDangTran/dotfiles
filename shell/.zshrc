@@ -13,6 +13,7 @@ antigen bundle command-not-found
 antigen bundle docker
 antigen bundle dotenv
 antigen bundle fzf
+antigen bundle golang
 antigen bundle rails
 antigen bundle ripgrep
 antigen bundle sdk
@@ -62,8 +63,11 @@ else
   local nvm_path="$HOME/.nvm"
 
   eval "$(/opt/homebrew/bin/brew shellenv)"
+  export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+  [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 fi
   
+
 export PATH="${brew_path}/bin:${brew_path}/sbin:$PATH"
 eval "$(rbenv init - zsh)"
 
@@ -134,12 +138,6 @@ z() {
 # starship
 eval "$(starship init zsh)"
 
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-export PATH="/usr/local/Homebrew/opt/imagemagick@6/bin":"/usr/local/Homebrew/opt/libpq/bin":"$PATH"
 export KUBE_CONFIG_PATH=~/.kube/config
 
 # golang
@@ -147,3 +145,4 @@ export GOPATH=$HOME/go
 export GOBIN=$HOME/go/bin
 export GOROOT=$(brew --prefix golang)/libexec
 export PATH=$PATH:$GOBIN:$GOROOT/bin
+
