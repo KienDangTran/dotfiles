@@ -139,6 +139,7 @@ z() {
 eval "$(starship init zsh)"
 
 export KUBE_CONFIG_PATH=~/.kube/config
+export BAT_THEME="Dracula"
 
 # golang
 export GOPATH=$HOME/go
