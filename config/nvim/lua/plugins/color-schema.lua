@@ -1,5 +1,13 @@
 return {
-  { "glepnir/zephyr-nvim" },
+  -- { "glepnir/zephyr-nvim" },
+  {
+    "EdenEast/nightfox.nvim",
+    opts = {
+      options = {
+        transparent = true,
+      },
+    },
+  },
 
   -- add symbols-outline
   {

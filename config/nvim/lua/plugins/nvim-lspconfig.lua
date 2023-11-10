@@ -41,6 +41,6 @@ return {
     { "gt", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Lspsaga - Peek type definition" },
     -- { "gd", "<cmd>Lspsaga goto_definition<CR>", desc = "Lspsaga - Go to definition" },
     { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "Lspsaga - Hover Doc" },
-    { "<leader>cs", "<cmd>Lspsaga outline<CR>", desc = "Lspsaga - Toggle outline" },
+    { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" },
   },
 }

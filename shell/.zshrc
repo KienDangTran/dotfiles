@@ -147,3 +147,6 @@ export GOBIN=$HOME/go/bin
 export GOROOT=$(brew --prefix golang)/libexec
 export PATH=$PATH:$GOBIN:$GOROOT/bin
 
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
