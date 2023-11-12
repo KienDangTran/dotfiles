@@ -12,10 +12,41 @@ end
 
 -- This is where you actually apply your config choices
 
--- For example, changing the color scheme:
+config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
+-- config.tab_bar_at_bottom = true
+
 config.color_scheme = "nordfox"
 config.font = wezterm.font("JetBrains Mono")
 config.line_height = 1.3
+
+-- https://wezfurlong.org/wezterm/config/lua/gui-events/gui-startup.html
+local mux = wezterm.mux
+
+wezterm.on("gui-startup", function(cmd)
+	local tab, pane, window = mux.spawn_window(cmd or {})
+	window:gui_window():maximize()
+end)
+
+local act = wezterm.action
+
+config.keys = {
+	{
+		key = ",",
+		mods = "CMD",
+		action = act.SpawnCommandInNewTab({
+			cwd = os.getenv("WEZTERM_CONFIG_DIR"),
+			set_environment_variables = {
+				TERM = "screen-256color",
+			},
+			args = {
+				"/opt/homebrew/bin/nvim",
+				os.getenv("WEZTERM_CONFIG_FILE"),
+			},
+		}),
+	},
+	-- other keys
+}
 
 -- and finally, return the configuration to wezterm
 return config
