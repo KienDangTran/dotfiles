@@ -1,6 +1,11 @@
 #!/bin/zsh
 # .zshrc
 ZSH_BASE=$HOME/dotfiles # Base directory for ZSH configuration
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000
+setopt appendhistory
+
 source $ZSH_BASE/antigen/antigen.zsh # Load Antigen
 
 antigen use oh-my-zsh # Yes, I want to use Oh My ZSH
@@ -78,8 +83,29 @@ export NVM_DIR="${nvm_path}"
 [ -s "${brew_opt_path}/nvm/nvm.sh" ] && . "${brew_opt_path}/nvm/nvm.sh"  # This loads nvm
 [ -s "${brew_opt_path}/nvm/etc/bash_completion.d/nvm" ] && . "${brew_opt_path}/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export PATH="$HOME/.pub-cache/bin":"$ANDROID_SDK_ROOT/platform-tools":"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin":"$PATH"
+autoload -U add-zsh-hook
+
+load-nvmrc() {
+  local nvmrc_path
+  nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version
+    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  fi
+}
+
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+export ANDROID_HOME=${brew_path}/share/android-commandlinetools
+export PATH="$HOME/.pub-cache/bin":"$ANDROID_HOME/platform-tools":"$ANDROID_HOME/emulator":"$ANDROID_HOME/cmdline-tools/latest/bin":"$PATH"
 #
 # Add rvm/rbenv to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin:$HOME/.rbenv/shims"

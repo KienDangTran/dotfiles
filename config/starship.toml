@@ -14,10 +14,6 @@ truncation_length = 10
 [docker_context]
 disabled = true
 
-[git_branch]
-
-[git_commit]
-
 [git_state]
 format = '[\($state( $progress_current of $progress_total)\)]($style) '
 
@@ -26,13 +22,11 @@ added_style = "bold blue"
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 disabled = false
 
-[git_status]
-
 [kubernetes]
 disabled = true
 
 [package]
 
-[shell]
-disabled = false
+[terraform]
+format = '[$symbol$version]($style) '
 

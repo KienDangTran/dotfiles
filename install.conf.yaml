@@ -14,6 +14,7 @@
     ~/.aliases: shell/.aliases
     ~/.zshrc: shell/.zshrc
     ~/.zprofile: shell/.zprofile
+    ~/.zsh_history: shell/.zsh_history
     ~/.gitconfig: .gitconfig
     ~/.config:
       create: true

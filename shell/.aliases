@@ -2,7 +2,6 @@ alias vim="nvim"
 alias ls="ls -alh"
 
 alias bat="bat -f --tabs 2"
-alias cat="bat -f --tabs 2"
 
 alias tf="terraform"
 alias k="kubectl"
@@ -13,4 +12,5 @@ alias sed="gsed"
 
 alias flutter='fvm flutter'
 alias dart='fvm dart'
+alias docker=podman
 
