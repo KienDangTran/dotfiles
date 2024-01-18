@@ -12,5 +12,7 @@ alias sed="gsed"
 
 alias flutter='fvm flutter'
 alias dart='fvm dart'
+alias ft='fvm flutter'
+alias dt='fvm dart'
 alias docker=podman
 
