@@ -4,6 +4,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "stevearc/dressing.nvim", -- optional for vim.ui.select
+    "Kuchteq/flutter-riverpod-snippets-luasnip-compatible",
   },
   ft = { "dart" },
   config = function()
