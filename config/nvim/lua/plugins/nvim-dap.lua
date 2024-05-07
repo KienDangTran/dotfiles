@@ -42,7 +42,9 @@ return {
         runtimeExecutable = "yarn",
         runtimeArgs = { "start" },
         envFile = "${workspaceFolder}/.env",
-        resolveSourceMapLocations = { "**" },
+        resolveSourceMapLocations = {
+          "${workspaceFolder}/**",
+        },
       })
     end
   end,

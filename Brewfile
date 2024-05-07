@@ -1,4 +1,5 @@
 tap "aws/tap"
+tap "dart-lang/dart"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"

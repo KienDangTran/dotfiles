@@ -176,3 +176,9 @@ export PATH=$PATH:$GOBIN:$GOROOT/bin
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/kien/.dart-cli-completion/zsh-config.zsh ]] && . /Users/kien/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
