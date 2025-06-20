@@ -24,7 +24,7 @@ antigen bundle ripgrep
 antigen bundle sdk
 antigen bundle ssh-agent
 antigen bundle vi-mode
-antigen bundle agkozak/zsh-z
+antigen bundle z
 antigen bundle zsh-interactive-cd
 antigen bundle zsh-navigation-tools
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -176,9 +176,4 @@ export PATH=$PATH:$GOBIN:$GOROOT/bin
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
-
-## [Completion]
-## Completion scripts setup. Remove the following line to uninstall
-[[ -f /Users/kien/.dart-cli-completion/zsh-config.zsh ]] && . /Users/kien/.dart-cli-completion/zsh-config.zsh || true
-## [/Completion]
 

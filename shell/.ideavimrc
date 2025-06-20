@@ -1,0 +1,136 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+let mapleader=" "
+
+" vim settings
+set scrolloff=10
+set linenumber
+set showmode " status bar
+set showcmd
+set visualbell
+set clipboard+=unnamed
+
+""" IdeaVim options
+set ideajoin
+set ideamarks
+set idearefactormode=normal
+set ideastatusicon=gray
+
+" find and replace
+set incsearch " Do incremental searching.
+set hlsearch
+set ignorecase
+set smartcase
+set gdefault
+nmap <leader>nh :noh<CR>
+
+" which-key
+set which-key
+set timeoutlen=15000
+let g:WhichKey_ShowVimActions = "true"
+
+""" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+Plug 'tpope/vim-surround'
+set surround
+map gsa S
+map gsr cs
+map gsd ds
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+set highlightedyank
+" Commentary plugin
+
+" Use system clipboard by default for y and p operations
+nnoremap yy "+yy
+vnoremap y "+y
+
+nnoremap p "+p
+vnoremap p "+p
+nnoremap P "+P
+vnoremap P "+P
+
+" Allow access to original y and p operations with leader key, e.g. to use registers
+nnoremap <leader>yy yy
+vnoremap <leader>y y
+
+nnoremap <leader>p p
+vnoremap <leader>p p
+nnoremap <leader>P P
+vnoremap <leader>P P
+
+" Allow to cut to system clipboard by using leader key with d
+nnoremap <leader>dd "+dd
+vnoremap <leader>d "+d
+
+" Tab navigation
+nnoremap <A-n> :tabnext<CR>
+nnoremap <A-p> :tabprev<CR>
+
+" Pane navigation
+nnoremap <A-h> <C-w>h
+nnoremap <A-l> <C-w>l
+nnoremap <A-k> <C-w>k
+nnoremap <A-j> <C-w>j
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Execute macro saved in 'q' register
+nnoremap qj @q
+
+" Popup navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+"""" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+" Go to code
+nmap gd <Action>(GotoDeclaration)
+nmap gy <Action>(GotoTypeDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gt <Action>(QuickImplementations)
+nmap gr <Action>(ShowUsages)
+nmap gT <Action>(GotoTest)
+nmap gf <Action>(Back)
+nmap gb <Action>(Forward)
+
+" File navigation
+map <leader>ff <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
+map <leader>fc <action>(FindInPath)
+map <leader><leader> <Action>(RecentFiles)
+map <leader>fl <action>(RecentLocations)
+map <leader>fs <action>(NewScratchFile)
+nmap / <action>(Find)
+
+" Errors
+map ]e <Action>(GotoNextError)
+map [e <Action>(GotoNextError)
+
+" Refactoring
+map <leader>ca <Action>(Refactorings.QuickListPopupAction)
+map <leader>cr <Action>(RenameElement)
+map <leader>ce <Action>(ExtractMethod)
+map <leader>cv <Action>(IntroduceVariable)
+map <leader>cf <Action>(IntroduceField)
+map <leader>cs <Action>(ChangeSignature)
+
+" Comment lines
+map gcc <action>(CommentByLineComment)
+
+" Folding
+map <leader>zc :action CollapseAllRegions<CR>
+map <leader>zo :action ExpandAllRegions<CR>
+
+" Window splits
+map <leader>wv <Action>(SplitVertically)
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wd <Action>(Unsplit)
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
