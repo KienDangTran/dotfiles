@@ -25,7 +25,6 @@ set ideastatusicon=gray
 
 " find and replace
 set incsearch " Do incremental searching.
-set hlsearch
 set ignorecase
 set smartcase
 set gdefault
@@ -119,7 +118,8 @@ map <leader>ca <Action>(Refactorings.QuickListPopupAction)
 map <leader>cr <Action>(RenameElement)
 map <leader>ce <Action>(ExtractMethod)
 map <leader>cv <Action>(IntroduceVariable)
-map <leader>cf <Action>(IntroduceField)
+map <leader>cd <Action>(IntroduceField)
+map <leader>cf <Action>(ReformatCode)
 map <leader>cs <Action>(ChangeSignature)
 
 " Comment lines
