@@ -3,5 +3,4 @@
 -- Add any additional options here
 local opt = vim.opt
 
-opt.relativenumber = false
 opt.wrap = true
