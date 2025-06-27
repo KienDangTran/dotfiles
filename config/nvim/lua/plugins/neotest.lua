@@ -1,5 +1,6 @@
 return {
   "nvim-neotest/neotest",
+  event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "antoinemadec/FixCursorHold.nvim",
