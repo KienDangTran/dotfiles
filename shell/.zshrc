@@ -15,7 +15,6 @@ antigen bundle aws
 antigen bundle bundler
 antigen bundle colorize
 antigen bundle command-not-found
-antigen bundle docker
 antigen bundle dotenv
 antigen bundle fzf
 antigen bundle golang

@@ -37,3 +37,6 @@
 	insteadOf = https://github.com/
 [credential]
 	helper = cache
+[user]
+	name = Kien
+	email = 14361196+KienDangTran@users.noreply.github.com
