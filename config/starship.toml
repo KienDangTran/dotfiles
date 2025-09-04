@@ -1,5 +1,8 @@
 command_timeout = 200
 
+[cmd_duration]
+  disabled = true
+
 [aws]
 disabled = false
 
