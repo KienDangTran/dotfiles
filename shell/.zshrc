@@ -73,7 +73,6 @@ fi
   
 
 export PATH="${brew_path}/bin:${brew_path}/sbin:$PATH"
-eval "$(rbenv init - zsh)"
 
 #nvm
 mkdir -p ~/.nvm ~/.nvm-x86
@@ -107,6 +106,7 @@ export ANDROID_HOME=${brew_path}/share/android-commandlinetools
 export PATH="$HOME/.pub-cache/bin":"$ANDROID_HOME/platform-tools":"$ANDROID_HOME/emulator":"$ANDROID_HOME/cmdline-tools/latest/bin":"$PATH"
 #
 # Add rvm/rbenv to PATH for scripting. Make sure this is the last PATH variable change.
+eval "$(rbenv init - zsh)"
 export PATH="$PATH:$HOME/.rvm/bin:$HOME/.rbenv/shims"
 
 # fzf

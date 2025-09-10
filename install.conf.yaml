@@ -21,7 +21,7 @@
       create: true
       relink: true
       glob: true
-      path: config/*
+      path: config/**/**
     ~/Library/Application Support/lazygit/config.yml: lazygit-config.yml
     ~/Library/Application Support/jesseduffield/lazygit/config.yml: lazygit-config.yml
 

@@ -2,27 +2,29 @@ return {
   "yetone/avante.nvim",
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   -- ⚠️ must add this setting! ! !
-  build = function()
-    -- conditionally use the correct build system for the current OS
-    if vim.fn.has("win32") == 1 then
-      return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-    else
-      return "make"
-    end
-  end,
+  build = vim.fn.has("win32") ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+    or "make",
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   ---@module 'avante'
   ---@type avante.Config
   opts = {
+    -- add any opts here
+    -- this file can contain specific instructions for your project
+    instructions_file = "avante.md",
+    -- for example
     provider = "copilot",
-    windows = {
-      width = 40,
+    auto_suggestions_provider = "copilot",
+    providers = {
+      morph = {
+        model = "morph-v3-large",
+      },
     },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
+    "ravitemer/mcphub.nvim",
     --- The below dependencies are optional,
     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
     "folke/snacks.nvim", -- for input provider snacks
@@ -53,5 +55,32 @@ return {
       },
       ft = { "markdown", "Avante" },
     },
+  },
+  behaviour = {
+    enable_fastapply = true, -- Enable Fast Apply feature
+  },
+  -- system_prompt as function ensures LLM always has latest MCP server state
+  -- This is evaluated for every message, even in existing chats
+  system_prompt = function()
+    local hub = require("mcphub").get_hub_instance()
+    return hub and hub:get_active_servers_prompt() or ""
+  end,
+  -- Using function prevents requiring mcphub before it's loaded
+  custom_tools = function()
+    return {
+      require("mcphub.extensions.avante").mcp_tool(),
+    }
+  end,
+  disabled_tools = {
+    "list_files", -- Built-in file operations
+    "search_files",
+    "read_file",
+    "create_file",
+    "rename_file",
+    "delete_file",
+    "create_dir",
+    "rename_dir",
+    "delete_dir",
+    "bash", -- Built-in terminal access
   },
 }

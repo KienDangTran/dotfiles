@@ -1,0 +1,166 @@
+{
+  "mcpServers": {
+    "aws_docs": {
+      "args": [
+        "awslabs.aws-documentation-mcp-server@latest"
+      ],
+      "autoApprove": [
+        "read_documentation",
+        "search_documentation",
+        "recommend"
+      ],
+      "command": "uvx",
+      "env": {
+        "AWS_DOCUMENTATION_PARTITION": "${AWS_DOCUMENTATION_PARTITION}",
+        "FASTMCP_LOG_LEVEL": "${FASTMCP_LOG_LEVEL}"
+      }
+    },
+    "context7": {
+      "autoApprove": [
+        "resolve-library-id",
+        "get-library-docs"
+      ],
+      "headers": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      },
+      "type": "streamable-http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "fetch": {
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "autoApprove": [],
+      "command": "uvx"
+    },
+    "filesystem": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "${ALLOWED_DIRECTORY}"
+      ],
+      "autoApprove": [
+        "read_file",
+        "read_text_file",
+        "read_media_file",
+        "read_multiple_files",
+        "write_file",
+        "edit_file",
+        "create_directory",
+        "list_directory",
+        "list_directory_with_sizes",
+        "directory_tree",
+        "move_file",
+        "search_files",
+        "get_file_info",
+        "list_allowed_directories"
+      ],
+      "command": "npx"
+    },
+    "git": {
+      "args": [
+        "mcp-server-git"
+      ],
+      "autoApprove": [
+        "git_status",
+        "git_diff_unstaged",
+        "git_diff_staged",
+        "git_diff",
+        "git_commit",
+        "git_add",
+        "git_reset",
+        "git_log",
+        "git_create_branch",
+        "git_checkout",
+        "git_show",
+        "git_init",
+        "git_branch"
+      ],
+      "command": "uvx"
+    },
+    "github": {
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "memory": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "autoApprove": [
+        "create_entities",
+        "create_relations",
+        "add_observations",
+        "delete_entities",
+        "delete_observations",
+        "delete_relations",
+        "read_graph",
+        "search_nodes",
+        "open_nodes"
+      ],
+      "command": "npx",
+      "custom_instructions": {
+        "disabled": false,
+        "text": "Follow these steps for each interaction:\n\n1. User Identification:\n   - You should assume that you are interacting with default_user\n   - If you have not identified default_user, proactively try to do so.\n\n2. Memory Retrieval:\n   - Always begin your chat by saying only \"Remembering...\" and retrieve all relevant information from your knowledge graph\n   - Always refer to your knowledge graph as your \"memory\"\n\n3. Memory\n   - While conversing with the user, be attentive to any new information that falls into these categories:\n     a) Basic Identity (age, gender, location, job title, education level, etc.)\n     b) Behaviors (interests, habits, etc.)\n     c) Preferences (communication style, preferred language, etc.)\n     d) Goals (goals, targets, aspirations, etc.)\n     e) Relationships (personal and professional relationships up to 3 degrees of separation)\n\n4. Memory Update:\n   - If any new information was gathered during the interaction, update your memory as follows:\n     a) Create entities for recurring organizations, people, and significant events\n     b) Connect them to the current entities using relations\n     c) Store facts about them as observations"
+      },
+      "disabled": false
+    },
+    "sequentialthinking": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "autoApprove": [
+        "sequentialthinking"
+      ],
+      "command": "npx"
+    },
+    "tavily": {
+      "args": [
+        "-y",
+        "tavily-mcp"
+      ],
+      "autoApprove": [
+        "tavily-search",
+        "tavily-extract",
+        "tavily-crawl",
+        "tavily-map"
+      ],
+      "command": "npx",
+      "env": {
+        "TAVILY_API_KEY": "${TAVILY_API_KEY}"
+      }
+    },
+    "time": {
+      "args": [
+        "mcp-server-time"
+      ],
+      "autoApprove": [
+        "get_current_time",
+        "convert_time"
+      ],
+      "command": "uvx"
+    }
+  },
+  "nativeMCPServers": {
+    "mcphub": {
+      "autoApprove": []
+    },
+    "neovim": {
+      "autoApprove": [
+        "execute_lua",
+        "execute_command",
+        "read_file",
+        "move_item",
+        "read_multiple_files",
+        "delete_items",
+        "find_files",
+        "list_directory",
+        "write_file",
+        "edit_file"
+      ]
+    }
+  }
+}
