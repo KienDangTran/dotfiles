@@ -1,6 +1,7 @@
 return {
   "mfussenegger/nvim-jdtls",
   branch = "master",
+  enabled = false,
   opts = {
     jdtls = function(opts)
       opts.settings = {

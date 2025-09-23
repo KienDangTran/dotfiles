@@ -28,7 +28,7 @@ return {
     --- The below dependencies are optional,
     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
     "folke/snacks.nvim", -- for input provider snacks
-    "echasnovski/mini.icons", -- or nvim-tree/nvim-web-devicons
+    "nvim-mini/mini.icons", -- or nvim-tree/nvim-web-devicons
     "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
       -- support for image pasting

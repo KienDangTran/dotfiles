@@ -107,6 +107,14 @@
       },
       "disabled": false
     },
+    "postgres": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "${POSTGRESQL_URL}"
+      ],
+      "command": "npx"
+    },
     "sequentialthinking": {
       "args": [
         "-y",
