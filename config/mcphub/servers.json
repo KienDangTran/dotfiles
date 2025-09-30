@@ -2,29 +2,27 @@
   "mcpServers": {
     "aws_docs": {
       "args": [
-        "awslabs.aws-documentation-mcp-server@latest"
+        "run",
+        "--rm",
+        "--interactive",
+        "--env",
+        "FASTMCP_LOG_LEVEL=ERROR",
+        "--env",
+        "AWS_DOCUMENTATION_PARTITION=aws",
+        "mcp/aws-documentation:latest"
       ],
-      "autoApprove": [
-        "read_documentation",
-        "search_documentation",
-        "recommend"
-      ],
-      "command": "uvx",
-      "env": {
-        "AWS_DOCUMENTATION_PARTITION": "${AWS_DOCUMENTATION_PARTITION}",
-        "FASTMCP_LOG_LEVEL": "${FASTMCP_LOG_LEVEL}"
-      }
+      "command": "docker",
+      "env": []
     },
     "context7": {
-      "autoApprove": [
-        "resolve-library-id",
-        "get-library-docs"
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
       ],
-      "headers": {
-        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
-      },
-      "type": "streamable-http",
-      "url": "https://mcp.context7.com/mcp"
+      "command": "npx",
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": "6000"
+      }
     },
     "fetch": {
       "args": [
@@ -35,27 +33,15 @@
     },
     "filesystem": {
       "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "${ALLOWED_DIRECTORY}"
+        "run",
+        "-i",
+        "--rm",
+        "--mount",
+        "type=bind,src=/Users/kien,dst=/projects",
+        "mcp/filesystem",
+        "/projects"
       ],
-      "autoApprove": [
-        "read_file",
-        "read_text_file",
-        "read_media_file",
-        "read_multiple_files",
-        "write_file",
-        "edit_file",
-        "create_directory",
-        "list_directory",
-        "list_directory_with_sizes",
-        "directory_tree",
-        "move_file",
-        "search_files",
-        "get_file_info",
-        "list_allowed_directories"
-      ],
-      "command": "npx"
+      "command": "docker"
     },
     "git": {
       "args": [
@@ -109,11 +95,13 @@
     },
     "postgres": {
       "args": [
-        "-y",
-        "@modelcontextprotocol/server-postgres",
+        "run",
+        "-i",
+        "--rm",
+        "mcp/postgres",
         "${POSTGRESQL_URL}"
       ],
-      "command": "npx"
+      "command": "docker"
     },
     "sequentialthinking": {
       "args": [
