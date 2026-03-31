@@ -18,6 +18,7 @@
     ~/.wakeup: shell/.wakeup
     ~/.gitconfig: .gitconfig
     ~/.ideavimrc: shell/.ideavimrc
+    ~/.markdownlint-cli2.yaml: shell/.markdownlint-cli2.yaml
     ~/.config:
       create: true
       relink: true
