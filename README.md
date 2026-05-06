@@ -1,10 +1,19 @@
 ## For MacOS
-1. install iterm2
-1. Install homebrew
+
+- Install homebrew
+
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-1. run
+
+- run
+
 ```
 ./install
 ```
+
+## For Debian
+Generate ssh key https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+run:
+`sudo ./install -p dotbot-apt/apt.py -c apt-packages.yml`

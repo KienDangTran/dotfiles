@@ -3,8 +3,9 @@
     link:
       relink: true
       create: true
+      force: true
 
-- clean: ["~"]
+- clean: ["~", "~/.config"]
 
 - create:
     - ~/.vim
@@ -13,7 +14,6 @@
     ~/.wezterm.lua: config/wezterm/.wezterm.lua
     ~/.aliases: shell/.aliases
     ~/.zshrc: shell/.zshrc
-    ~/.zsh_history: shell/.zsh_history
     ~/.sleep: shell/.sleep
     ~/.wakeup: shell/.wakeup
     ~/.gitconfig: .gitconfig
@@ -24,18 +24,31 @@
       relink: true
       glob: true
       path: config/**/**
-    ~/Library/Application Support/lazygit/config.yml: lazygit-config.yml
-    ~/Library/Application Support/jesseduffield/lazygit/config.yml: lazygit-config.yml
+
+# linux
+- defaults:
+    link:
+      if: '[ "$(uname -s)" = "Linux" ]'
+
+# mac
+- defaults:
+    link:
+      if: '[ "$(uname -s)" = "Darwin" ]'
+- link:
+    ~/.gitlocal:
+      path: git/mac
+      force: true
+    ~/Library/Application Support/lazygit/config.yml: config/lazygit/config.yml
+    ~/Library/Application Support/jesseduffield/lazygit/config.yml: config/lazygit/config.yml
 
 - shell:
-    - [chsh -s $(which zsh) || true, Making zsh the default shell]
-    - [git submodule update --init --recursive || true, Installing submodules]
-
-# This apply to all commands that come after setting the defaults.
-- defaults:
-    brewfile:
-      stdout: false
-      stderr: false
-      include: ["tap", "brew", "cask", "mas"]
-- brewfile:
-    file: Brewfile
+    - description: apt-get install
+      command: |
+        if [ "$(uname -s)" = "Linux" ]; then
+          sudo apt-get update
+          sudo apt-get install -y zsh
+        fi
+      stdout: true
+      stdin: true
+    - [sudo chsh -s $(which zsh), Making zsh the default shell]
+    - [git submodule update --init --recursive, Installing submodules]

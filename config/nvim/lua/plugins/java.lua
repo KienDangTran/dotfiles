@@ -1,18 +1,18 @@
-return {
-  "mfussenegger/nvim-jdtls",
-  branch = "master",
-  enabled = false,
-  opts = {
-    jdtls = function(opts)
-      opts.settings = {
-        java = {
-          format = {
-            enabled = false,
-          },
-        },
-      }
-
-      return opts
-    end,
-  },
-}
+-- return {
+--   "mfussenegger/nvim-jdtls",
+--   branch = "master",
+--   enabled = false,
+--   opts = {
+--     jdtls = function(opts)
+--       opts.settings = {
+--         java = {
+--           format = {
+--             enabled = false,
+--           },
+--         },
+--       }
+--
+--       return opts
+--     end,
+--   },
+-- }

@@ -54,105 +54,32 @@ ZSH_COLORIZE_TOOL=chroma
 # Default editor
 export EDITOR=nvim
 
-if [ "$(sysctl -n sysctl.proc_translated)" = "1" ]; then
-  local brew_path="/usr/local/homebrew"
-  local brew_opt_path="/usr/local/Homebrew/opt"
-  local nvm_path="$HOME/.nvm-x86"
+case `uname` in
+  Darwin)
+    if [ "$(sysctl -n sysctl.proc_translated)" = "1" ]; then
+      local brew_path="/usr/local/homebrew"
+      local brew_opt_path="/usr/local/Homebrew/opt"
+      local nvm_path="$HOME/.nvm-x86"
 
-  eval "$(/usr/local/homebrew/bin/brew shellenv)"
-  export DOCKER_DEFAULT_PLATFORM=linux/amd64
-else
-  local brew_path="/opt/homebrew"
-  local brew_opt_path="/opt/homebrew/opt"
-  local nvm_path="$HOME/.nvm"
+      eval "$(/usr/local/homebrew/bin/brew shellenv)"
+      export DOCKER_DEFAULT_PLATFORM=linux/amd64
+    else
+      local brew_path="/opt/homebrew"
+      local brew_opt_path="/opt/homebrew/opt"
+      local nvm_path="$HOME/.nvm"
 
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-  [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-fi
-  
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
 
-export PATH="${brew_path}/bin:${brew_path}/sbin:$PATH"
+    export PATH="${brew_path}/bin:${brew_path}/sbin:$PATH"
 
-#nvm
-mkdir -p ~/.nvm ~/.nvm-x86
-export NVM_DIR="${nvm_path}"
-
-[ -s "${brew_opt_path}/nvm/nvm.sh" ] && . "${brew_opt_path}/nvm/nvm.sh"  # This loads nvm
-[ -s "${brew_opt_path}/nvm/etc/bash_completion.d/nvm" ] && . "${brew_opt_path}/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  ;;
+  Linux)
+    # Commands for Linux go here
+  ;;
+esac
 
 autoload -U add-zsh-hook
-
-load-nvmrc() {
-  local nvmrc_path
-  nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version
-    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
-      nvm use
-    fi
-  fi
-}
-
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-
-export ANDROID_HOME=${brew_path}/share/android-commandlinetools
-export PATH="$HOME/.pub-cache/bin":"$ANDROID_HOME/platform-tools":"$ANDROID_HOME/emulator":"$ANDROID_HOME/cmdline-tools/latest/bin":"$PATH"
-#
-# Add rvm/rbenv to PATH for scripting. Make sure this is the last PATH variable change.
-eval "$(rbenv init - zsh)"
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/.rbenv/shims"
-
-# fzf
-if [[ ! "$PATH" == *${brew_opt_path}/fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/${brew_opt_path}/fzf/bin"
-fi
-
-# Auto-completion
-# ---------------
-[[ $- == *i* ]] && source "${brew_opt_path}/fzf/shell/completion.zsh" 2> /dev/null
-
-# Key bindings
-# ------------
-source "${brew_opt_path}/fzf/shell/key-bindings.zsh"
-# export FZF_BASE='/opt/homebrew/Cellar/fzf/0.42.0'
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-export FZF_DEFAULT_OPTS='
-	--ansi
-	--inline-info
-	--height 80%
-	--reverse
-	--preview-window="right:60%"
-	--preview "bat -f --tabs 2 --wrap character {}"
-	--bind="alt-k:preview-up,alt-p:preview-up"
-	--bind="alt-j:preview-down,alt-n:preview-down"
-	--bind="ctrl-r:toggle-all"
-	--bind="ctrl-s:toggle-sort"
-	--bind="F3:toggle-preview-wrap"
-	--bind="F4:toggle-preview"
-	--bind="ctrl-u:preview-page-up"
-	--bind="ctrl-d:preview-page-down"
-'
-_fzf_comprun() {
-  # (EXPERIMENTAL) Advanced customization of fzf options via _fzf_comprun function
-  # - The first argument to the function is the name of the command.
-  # - You should make sure to pass the rest of the arguments to fzf.
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
-    export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
-    ssh)          fzf "$@" --preview 'dig {}' ;;
-    *)            fzf "$@" --preview "bat -f --tabs 2 --wrap character {}";;
-  esac
-}
 
 unalias z 2> /dev/null
 z() {
@@ -166,13 +93,5 @@ eval "$(starship init zsh)"
 export KUBE_CONFIG_PATH=~/.kube/config
 export BAT_THEME="Dracula"
 
-# golang
-export GOPATH=$HOME/go
-export GOBIN=$HOME/go/bin
-export GOROOT=$(brew --prefix golang)/libexec
-export PATH=$PATH:$GOBIN:$GOROOT/bin
-
-
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
 

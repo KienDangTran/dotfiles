@@ -1,0 +1,18 @@
+- apt:
+    - wezterm
+    - zsh
+    - neovim
+    - curl
+    - awscli
+    - bat
+    - chroma
+    - fzf
+    - git-delta
+    - lazygit
+    - ripgrep
+    - starship
+    - jq
+    - yq
+    - luajit
+    - gcc
+    - fd-find

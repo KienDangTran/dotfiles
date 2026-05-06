@@ -41,6 +41,8 @@ end)
 
 -- This table will hold the configuration.
 local config = {}
+config.font = wezterm.font("JetBrains Mono")
+config.warn_about_missing_glyphs = false
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
@@ -61,11 +63,6 @@ config.use_fancy_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.color_scheme = "nordfox"
-config.font = wezterm.font({
-	family = "JetBrainsMono Nerd Font",
-	-- disable ligatures
-	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-})
 config.line_height = 1.3
 
 local act = wezterm.action
