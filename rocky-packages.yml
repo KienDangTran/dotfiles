@@ -5,6 +5,14 @@
 # here — they are installed by the shell directive in install.conf.yaml,
 # because the upstream dotbot-dnf plugin does not enable COPR repos.
 
+# `-y` is required because the plugin closes stdin; without it dnf's "[y/N]"
+# prompt hits EOF and every install fails non-zero. `stdout: True` so progress
+# is visible.
+- defaults:
+    dnf:
+      options: "-y"
+      stdout: True
+
 - dnf:
     - epel-release
 
