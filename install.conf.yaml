@@ -42,11 +42,20 @@
     ~/Library/Application Support/jesseduffield/lazygit/config.yml: config/lazygit/config.yml
 
 - shell:
-    - description: apt-get install
+    - description: install Linux packages (apt or dnf, including COPR-only tools)
       command: |
         if [ "$(uname -s)" = "Linux" ]; then
-          sudo apt-get update
-          sudo apt-get install -y zsh
+          if command -v apt-get >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y zsh curl
+          elif command -v dnf >/dev/null 2>&1; then
+            sudo dnf install -y zsh curl dnf-plugins-core
+            sudo dnf copr enable -y atim/lazygit
+            sudo dnf copr enable -y atim/starship
+            sudo dnf copr enable -y wezfurlong/wezterm-nightly
+            sudo dnf copr enable -y atim/delta
+            sudo dnf install -y lazygit starship wezterm git-delta
+          fi
         fi
       stdout: true
       stdin: true
