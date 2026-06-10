@@ -1,0 +1,23 @@
+# RockyLinux package list. Run with the dotbot-dnf plugin:
+#   sudo ./install -p dotbot-dnf/dnf.py -c rocky-packages.yml
+#
+# COPR-only packages (lazygit, starship, wezterm, git-delta) are not listed
+# here — they are installed by the shell directive in install.conf.yaml,
+# because the upstream dotbot-dnf plugin does not enable COPR repos.
+
+- dnf:
+    - epel-release
+
+- dnf:
+    - zsh
+    - curl
+    - neovim
+    - bat
+    - fzf
+    - ripgrep
+    - fd-find
+    - jq
+    - yq
+    - luajit
+    - gcc
+    - awscli
