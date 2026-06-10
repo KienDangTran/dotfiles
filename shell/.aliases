@@ -1,4 +1,3 @@
-alias vim="nvim"
 alias ls="ls -alh"
 
 alias bat="bat -f --tabs 2"
@@ -7,8 +6,6 @@ alias tf="terraform"
 alias k="kubectl"
 alias ks="kubectl -n kube-system"
 alias kd="kubectl -n default"
-
-alias sed="gsed"
 
 alias flutter='fvm flutter'
 alias dart='fvm dart'

@@ -14,8 +14,6 @@
     ~/.wezterm.lua: config/wezterm/.wezterm.lua
     ~/.aliases: shell/.aliases
     ~/.zshrc: shell/.zshrc
-    ~/.sleep: shell/.sleep
-    ~/.wakeup: shell/.wakeup
     ~/.gitconfig: .gitconfig
     ~/.ideavimrc: shell/.ideavimrc
     ~/.markdownlint-cli2.yaml: shell/.markdownlint-cli2.yaml

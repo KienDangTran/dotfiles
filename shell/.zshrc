@@ -94,4 +94,6 @@ export KUBE_CONFIG_PATH=~/.kube/config
 export BAT_THEME="Dracula"
 
 autoload -U +X bashcompinit && bashcompinit
+autoload -Uz compinit
+compinit
 
