@@ -7,6 +7,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "nvim-neotest/neotest-plenary",
     "nvim-neotest/neotest-jest",
+    "marilari88/neotest-vitest",
   },
-  opts = { adapters = { "neotest-plenary", "neotest-jest" } },
+  opts = { adapters = { "neotest-plenary", "neotest-jest", "neotest-vitest" } },
 }

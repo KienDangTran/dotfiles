@@ -97,3 +97,14 @@ autoload -U +X bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit
 
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/kien/.juliaup/bin' $path)
+export PATH
+# Tab completion for juliaup and julia channel selection
+[ -f "/home/kien/.julia/juliaup/completions/zsh.zsh" ] && source "/home/kien/.julia/juliaup/completions/zsh.zsh"
+
+# <<< juliaup initialize <<<
